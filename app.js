@@ -22,7 +22,7 @@ const app = express();
 app.use(express.json());
 
 //Cors conectando com o frontend.
-app.use(cors({ origin: 'http://192.168.1.180:3000' }));
+app.use(cors({ origin: 'https://cfp-app.vercel.app/' }));
 
 /**
  * Rota raiz
