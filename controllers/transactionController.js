@@ -19,17 +19,22 @@ const create = async (req, res) => {
     const date = yearMonthDay;
     const resultado = date.split('-', 3);
 
+    //Constribuição do Herlon Costa.
+    const [ano, mes, dia] = resultado;
+
     const transaction = new Transaction({
       description,
       value,
       category,
-      year: resultado[0],
-      month: resultado[1],
-      day: resultado[2],
-      yearMonth: `${resultado[0]}-${resultado[1]}`,
+      year: ano,
+      month: mes,
+      day: dia,
+      yearMonth: `${ano}-${mes}`,
       yearMonthDay,
       type,
     });
+
+    console.log(transaction);
 
     await transaction.save(transaction);
 
@@ -97,12 +102,15 @@ const update = async (req, res) => {
       const data = body.yearMonthDay;
       const resultado = data.split('-', 3);
 
+      //Contribuição do Herlon Costa
+      const [ano, mes, dia] = resultado;
+
       const editedTransaction = {
         ...body,
-        year: resultado[0],
-        month: resultado[1],
-        day: resultado[2],
-        yearMonth: `${resultado[0]}-${resultado[1]}`,
+        year: ano,
+        month: mes,
+        day: dia,
+        yearMonth: `${ano}-${mes}`,
       };
 
       const transaction = await Transaction.findByIdAndUpdate(
